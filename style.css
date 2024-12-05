@@ -1,0 +1,426 @@
+/* إعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(135deg, #f4f4f8, #fdfdfd);
+    color: #333;
+}
+
+/* الشريط الجانبي */
+.sidebar {
+    width: 250px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    font-size: 20px;
+    color: #333;
+    
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sidebar h2 span {
+    font-weight: normal;
+    color: #165d31;
+    font-size: small;
+    font-weight: 700;
+}
+
+.menu-item {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 400px;
+    cursor: pointer;
+}
+
+.pro-upgrade {
+    background-color: #165d3166;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.pro-upgrade p {
+    margin-bottom: 10px;
+    color: #165d31;
+    font-size: 14px;
+}
+
+.pro-upgrade button {
+    background-color: #165d31;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-profile p {
+    font-size: 14px;
+    color: #333;
+}
+
+/* محتوى الصفحة الرئيسي */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header h1 {
+    font-size: 28px;
+    color: #444;
+    padding-left: 20px;
+}
+
+.model-switch {
+    display: flex;
+    gap: 10px;
+}
+
+.model-switch button {
+    background-color: #f0f0f5;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.model-switch .active {
+    background-color: #165d31;
+    color: #fff;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-icons input[type="search"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.icon {
+    font-size: 18px;
+    cursor: pointer;
+    color: #555;
+}
+
+.icon.user {
+    font-size: 20px;
+}
+
+/* صندوق الدردشة */
+.chat-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.icon-large {
+    font-size: 100px;
+    color: #d9d9ff;
+    margin-bottom: 20px;
+}
+
+.chat-box input[type="text"] {
+    width: 60%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.submit-btn {
+    background-color: #165d31;
+    
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+}
+/* تنسيق النافذة المنبثقة */
+.modal {
+    display: none; /* مخفية بشكل افتراضي */
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* تظليل الخلفية */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.modal-content label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 14px;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.modal-content button {
+    background-color: #165d31;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+}
+/* تنسيق أيقونة البرق بجانب حقل الإدخال */
+.chat-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.lightning-icon {
+    font-size: 104px;
+    color: #165d31;
+    position: absolute;
+    top: 130px;
+    transition: transform 0.3s ease, top 0.3s ease;
+}
+
+/* وضع الأيقونة عند ظهور الرسالة */
+.chat-box.active .lightning-icon {
+    top: -10px; /* ترفع الأيقونة للأعلى */
+    right: 50%; /* يتم ضبطها في المنتصف */
+    transform: translateX(50%); /* يتم تحريكها للوسط */
+}
+
+
+/* الوضع الداكن */
+body.dark-mode {
+    background: linear-gradient(135deg, #333, #444);
+    color: #f4f4f4;
+}
+body.dark-mode .header h1 {
+    font-size: 28px;
+    color: #d0d0d0;
+    padding-left: 20px;
+}
+
+body.dark-mode .sidebar {
+    background-color: #222;
+    color: #ffffff;
+    border-right: 1px solid #444;
+    
+}
+body.dark-mode .sidebar .menu-item{
+    color: #ffffff;
+    
+}
+body.dark-mode .sidebar h2{
+    color: white;
+    
+}
+body.dark-mode .user-profile p {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+body.dark-mode .pro-upgrade {
+    background-color: #2a2a2a;
+    color: #f4f4f4;
+}
+
+body.dark-mode .pro-upgrade p {
+    color: #bdbdbd;
+}
+
+body.dark-mode .pro-upgrade button {
+    background-color: #434344;
+    
+}
+
+body.dark-mode .main-content {
+    color: #f4f4f4;
+}
+
+body.dark-mode .header-icons input[type="search"] {
+    background-color: #555;
+    color: #f4f4f4;
+    border: 1px solid #444;
+}
+
+body.dark-mode .model-switch button {
+    background-color: #555;
+    color: #f4f4f4;
+}
+
+body.dark-mode .model-switch .active {
+    background-color: #165d31;
+    color: #fff;
+}
+
+body.dark-mode .chat-box input[type="text"] {
+    
+    background-color: #555;
+    color: #f4f4f4;
+    border: 1px solid #444;
+}
+
+body.dark-mode .submit-btn {
+    background-color: #165d31;
+}
+.chat-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* تنسيق زر الإرسال */
+.submit-btn {
+    background-color: #1e5631; /* لون أخضر داكن */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.submit-btn:hover {
+    background-color: #145022;
+}
+
+/* تنسيق صندوق الاستجابة */
+.response-box {
+    width: 80%;
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+    max-width: 600px;
+    word-wrap: break-word;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; /* حركة سلسة */
+    font-size: 18px; /* تكبير الخط */
+    line-height: 1.5; /* زيادة المسافة بين الأسطر */
+    color: #333; /* لون النص */
+}
+
+/* التنسيق للصور إذا كانت هي المحتوى */
+.response-box img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+
+/* تخصيص شكل صندوق الإدخال والإرسال */
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.input-container input {
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    width: 300px;
+}
+.input-container button {
+    padding: 10px 20px;
+    border-radius: 25px;
+    background-color: #165d31;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.input-container button:hover {
+    background-color: #165d31;
+}
+

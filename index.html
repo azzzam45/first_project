@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenSA AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="Advanced_rag.ipynb">
+</head>
+<body>
+    <!-- الشريط الجانبي -->
+    <div class="sidebar">
+        <h2>Open <span style="font-size: large; position: relative;
+    left: -5px;;">SA</span> <span>AI FREE</span></h2>
+        <div class="menu-item">Chat</div>
+        
+        <div class="pro-upgrade">
+            <p>Go unlimited with PRO</p>
+            <p>Get your OpenSA AI to another level and start with PRO!</p>
+            <button id="upgrade-button">Get started with PRO</button>
+        </div>
+        
+        <!-- نافذة منبثقة للدفع -->
+        <div id="upgrade-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Upgrade to PRO</h2>
+
+                <form id="payment-form">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
+        
+                    <label for="expiry-date">Expiry Date:</label>
+                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+        
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" required>
+        
+                    <button type="submit">Submit Payment</button>
+                </form>
+            </div>
+        </div>
+        
+        
+        
+        <div class="user-profile">
+            <img src="img/azzam.jpg" alt="User">
+            <p>Azzam alsayegh</p>
+        </div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        <div class="header">
+            <h1>OpenSA</h1>
+            
+            <!-- اختيار النماذج -->
+            <div class="model-switch">
+                <button class="active">GPT-3.5</button>
+                <button>GPT-4</button>
+            </div>
+            
+            <!-- شريط البحث والأيقونات -->
+            <div class="header-icons">
+                <input type="search" placeholder="Search">
+                <div class="icon">🔔</div>
+                <div class="icon">🌙</div>
+                <div class="icon user">👤</div>
+            </div>
+        </div>
+        
+        <!-- صندوق الدردشة -->
+        <div class="chat-box">
+            <input type="text" placeholder="How can I serve you?" />
+            <span class="lightning-icon">⚡</span>
+            <button class="submit-btn">Submit</button>
+        </div>
+        <div id="response-box" class="response-box">git;hnkd.fgbhjstmnfgn.xbtrwbwrgssdfdwfdfvdfvwdfvdfvwdffgb</div> <!-- صندوق عرض النتيجة -->
+        
+        <!-- <div class="response-box" id="message-content">
+            This is the message from the database.
+        </div> -->
+        <!-- نافذة إعدادات الحساب -->
+<div class="modal" id="accountSettingsModal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Account Settings</h2>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Azzam alsayegh">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="example@example.com">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="••••••••">
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+    </div>
+</body>
+<script src="script.js"></script>
+
+
+<script>
+// استرجاع العناصر
+const inputField = document.getElementById(Advanced_rag.process_quiry);
+const submitButton = document.getElementById(Advanced_rag.gr.Button);
+const responseBox = document.getElementById(Advanced_rag.gr.Markdown);
+
+// إضافة وظيفة عند الضغط على زر "إرسال"
+submitButton.addEventListener('click', () => {
+    const query = inputField.value; // قراءة استعلام المستخدم
+
+    // استدعاء الدالة لجلب البيانات من قاعدة البيانات بناءً على الاستعلام
+    fetchData(query);
+    
+    // إفراغ حقل الإدخال بعد الإرسال
+    inputField.value = '';
+});
+
+// دالة لجلب البيانات من قاعدة بيانات المتجهات (محاكاة)
+async function fetchData(query) {
+    // هنا نفترض أن الدالة تقوم بجلب البيانات من API
+    // سنقوم باستخدام `setTimeout` لمحاكاة التأخير في استرجاع البيانات
+    setTimeout(() => {
+        // محاكاة للبيانات المسترجعة
+        const data = mockDatabase(query);
+
+        // تحقق من نوع البيانات: نص أو صورة
+        if (data.type === 'image') {
+            responseBox.innerHTML = `<img src="${data.content}" alt="نتيجة البحث">`;
+        } else if (data.type === 'text') {
+            responseBox.textContent = data.content;
+        } else {
+            responseBox.textContent = "لم يتم العثور على نتيجة مناسبة.";
+        }
+    }, 1000); // محاكاة تأخير قدره 1 ثانية
+}
+
+// محاكاة قاعدة بيانات بناءً على الاستعلام
+function mockDatabase(query) {
+    // هنا يمكن تخصيص النتائج حسب الكلمات المدخلة
+    if (query.includes('hello')) {
+        return { type: 'text', content: 'Hello! How can I assist you today?' };
+    } else if (query.includes('picture')) {
+        return { type: 'image', content: 'https://via.placeholder.com/150' };
+    } else {
+        return { type: 'text', content: 'No matching data found.' };
+    }
+}
+</script>
+
+</html>
